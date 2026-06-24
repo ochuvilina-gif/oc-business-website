@@ -1,0 +1,14 @@
+{
+  "id": "session-1781124630487",
+  "startedAt": "2026-06-10T20:50:30.487Z",
+  "cwd": "/Users/olga/business-website-v2",
+  "context": {},
+  "metrics": {
+    "edits": 1,
+    "commands": 0,
+    "tasks": 0,
+    "errors": 0
+  },
+  "endedAt": "2026-06-11T20:16:46.871Z",
+  "duration": 84376385
+}

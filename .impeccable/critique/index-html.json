@@ -1,0 +1,41 @@
+{
+  "slug": "index-html",
+  "target": "index.html",
+  "date": "2026-06-10",
+  "score": 26,
+  "scoreMax": 40,
+  "band": "acceptable",
+  "heuristics": [
+    { "n": 1, "label": "Visibility of System Status",      "score": 2, "note": "Form shows fake success — messages never reach Olga" },
+    { "n": 2, "label": "Match System / Real World",        "score": 4, "note": "Excellent German, natural language for Handwerker" },
+    { "n": 3, "label": "User Control and Freedom",         "score": 3, "note": "Nav and mobile menu solid" },
+    { "n": 4, "label": "Consistency and Standards",        "score": 3, "note": "Visual design coherent; CTA labels vary" },
+    { "n": 5, "label": "Error Prevention",                 "score": 2, "note": "HTML5 required but no inline validation UI" },
+    { "n": 6, "label": "Recognition Rather Than Recall",   "score": 4, "note": "All actions visible, services fully described" },
+    { "n": 7, "label": "Flexibility and Efficiency",       "score": 2, "note": "Landing page by nature" },
+    { "n": 8, "label": "Aesthetic and Minimalist Design",  "score": 3, "note": "Clean; hero stats + trust section repeat same 3 messages verbatim" },
+    { "n": 9, "label": "Error Recovery",                   "score": 1, "note": "Fake success on form; no real error path" },
+    { "n": 10,"label": "Help and Documentation",           "score": 2, "note": "Contact details visible; no phone, no FAQ" }
+  ],
+  "detector": {
+    "findings": [
+      { "id": "single-font",             "verdict": "false-positive", "note": "Barlow + Barlow Semi Condensed are two distinct optical variants" },
+      { "id": "numbered-section-markers","verdict": "false-positive", "note": "01-04 used only in the genuine 4-step process sequence" }
+    ]
+  },
+  "issues": [
+    { "priority": "P0", "title": "Contact form never submits", "file": "js/main.js", "line": 56, "fix": "Integrate Formspree / Netlify Forms or replace with mailto: as interim" },
+    { "priority": "P1", "title": "Text contrast failures: --text-muted (#94A3B8) at ~2.8:1", "fix": "Change to #6B7280; --text-light to #4B5563" },
+    { "priority": "P1", "title": "Hero stat cards + trust section repeat same 3 claims verbatim", "fix": "Remove stat cards or give them unique content" },
+    { "priority": "P2", "title": ".card-note class undefined in CSS", "fix": "Add .card-note rule (0.8125rem, --text-muted)" },
+    { "priority": "P2", "title": "All pricing tiers show 'auf Anfrage' with no floor", "fix": "Add 'ab X €/Monat' or remove pricing section" },
+    { "priority": "P3", "title": "Overlay link hover: lime (#A3E635) on white at ~1.6:1", "fix": "Use color: var(--accent-text) on hover" },
+    { "priority": "P3", "title": "No photo of Olga on site — undermines 'persönlich' brand", "fix": "Add portrait to about section" },
+    { "priority": "P3", "title": "No autocomplete attributes on contact form inputs", "fix": "Add autocomplete='name', 'email', 'off'" }
+  ],
+  "personaRedFlags": [
+    { "persona": "Klaus (Handwerker)", "finding": "No testimonials + 'auf Anfrage' pricing → closes tab" },
+    { "persona": "Jordan (First-timer)", "finding": "Fills form, sees fake success, never hears back" },
+    { "persona": "Casey (Mobile)", "finding": "No phone, no autocomplete, CTA text wraps at 375px" }
+  ]
+}
